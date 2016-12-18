@@ -1,7 +1,7 @@
 Description
 ===========
 
-Install the [Openfire Jabber server](http://www.igniterealtime.org/) from source.
+Install the [Openfire Jabber server](http://www.igniterealtime.org/) from source or rpm.
 
 # Requirements
 The following Chef cookbooks should be installed:
@@ -22,34 +22,34 @@ This *should* still work using the built-in OpenFire database instead of using P
 All attributes are optional
 
 ## Version
-* `node[:openfire][:source_tarball]`: currently defaults to `openfire_3_8_1.tar.gz`
+* `node['openfire']['source_tarball']`: currently defaults to `openfire_4_0_4.tar.gz`
     * This tarball will automatically be downloaded and installed
 
 ## Installation
-* `node[:openfire][:user]`: the local user account to create and use to run the openfire process; defaults to `openfire`
-    * also see `node[:openfire][:group]`, which also defaults to `openfire`
-* `node[:openfire][:base_dir]`: the location on the file system to install openfire
-* `node[:openfire][:config][:admin_console][:port]`: Use your web browser to connect to this port while you are first setting up openfire. Defaults to 9090.
-* `node[:openfire][:config][:admin_console][:secure_port]`: Use your web browser to connect to this port after you have set up openfire for further configuration. This will require an https/SSL connection. Defaults to 9091.
-* `node[:openfire][:config][:locale]`: Defaults to `en`.
+* `node['openfire']['user']`: the local user account to create and use to run the openfire process; defaults to `openfire`
+    * also see `node['openfire']['group']`, which also defaults to `openfire`
+* `node['openfire']['base_dir']`: the location on the file system to install openfire
+* `node['openfire']['config']['admin_console']['port']`: Use your web browser to connect to this port while you are first setting up openfire. Defaults to 9090.
+* `node['openfire']['config']['admin_console']['secure_port']`: Use your web browser to connect to this port after you have set up openfire for further configuration. This will require an https/SSL connection. Defaults to 9091.
+* `node['openfire']['config']['locale']`: Defaults to `en`.
 * `node[:openfire][:config][:network][:interface]`: Defaults to `nil` (listen on all interfaces).
 
 ## Database
-* `node[:openfire][:database][:type]`: currently only works with 'postgresql'. If you want to use the built-in database (untested), do not set this.
-* `node[:openfire][:database][:password]`: the database password for the Openfire user (required if database type is specified)
-* `node[:openfire][:database][:name]`: default `openfire`
-    * also see `[:database][:user]`, `[:database][:host]`, `[:database][:port]`, which have sane defaults
+* `node['openfire']['database']['type']`: currently only works with 'postgresql'. If you want to use the built-in database (untested), do not set this.
+* `node['openfire']['database']['password']`: the database password for the Openfire user (required if database type is specified)
+* `node['openfire']['database']['name']`: default `openfire`
+    * also see `['database']['user']`, `['database']['host']`, `['database']['port']`, which have sane defaults
 
 # Usage
 
-* Optionally set the attributes mentioned in the `Attributes` section. 
+* Optionally set the attributes mentioned in the `Attributes` section.
 * Add this to your node's run list: `recipe[openfire]`, then run Chef.
 * Startup configuration is in the file `/etc/openfire/openfire.xml`
 * Java certificates are in the `/etc/openfire/security` directory.
 
 ## New Installation
 
-If you are configuring a new installation of Openfire, use your web browser to connect to your host, port 9091 (or whatever port you chose for `node[:openfire][:config][:admin_console][:port]` above). Run through the "wizard", and accept all defaults.
+If you are configuring a new installation of Openfire, use your web browser to connect to your host, port 9091 (or whatever port you chose for `node['openfire']['config']['admin_console']['port']` above). Run through the "wizard", and accept all defaults.
 
 ## Import
 
@@ -69,3 +69,24 @@ Download and untar into /opt/openfire. Then set symbolic links:
 
 Also copy your plugins:
 * rsync -av /opt/openfire_old/plugins/ /opt/openfire/plugins/
+
+
+**Author: ** Gavin Montague <gavin@leftbrained.co.uk>
+**Author: ** Steve Clark <steve@bigsteve.us>  
+
+** Copyright (c) ** 2012-2016 Gavin Montague
+** Copyright (c) ** 2016 Steve Clark
+
+```
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```

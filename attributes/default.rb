@@ -1,12 +1,12 @@
 default['openfire']['source_tarball'] = 'openfire_4_0_4.tar.gz'
+default['openfire']['source_rpm'] = 'openfire-4.1.0-0.2.beta.x86_64.rpm'
 
-# precalculated checksums: `sha256sum openfire_v_v_v.tar.gz | cut -c1-16`
-# checksums = {
-#   'openfire_4_0_4.tar.gz' => '5b395f2aedfa55e989730ee960a8c6cb7624bd0e',
-#   'openfire_3_8_0.tar.gz' => 'd5bef61a313ee41b'
-# }
+# default to install via rpm
+default['openfire']['install_type'] = 'rpm'
+
 
 default['openfire']['source_checksum'] = '51253420e52c623bee57bfa1494bdfb0aabe7b47e594bb4a4f39e927488d5552'
+default['openfire']['rpm_source_checksum'] = '7145cd99ee22dae11ef3c3b1c9f6fc408b33f837c9cfec90d4c6dc5a20423df4'
 
 default['openfire']['base_dir'] = '/opt'
 default['openfire']['home_dir'] = "#{openfire['base_dir']}/openfire"
