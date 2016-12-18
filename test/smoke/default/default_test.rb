@@ -1,4 +1,4 @@
-# encoding: utf-8
+ # encoding: utf-8
 
 # Inspec test for recipe tsa_yum::default
 
@@ -7,5 +7,5 @@
 
 describe port(9090) do
   it { should be_listening }
-  its('processes') {should include 'openfire'}
+  its('processes') {should include 'java'}
 end
