@@ -1,21 +1,37 @@
 ---
 driver:
   name: vagrant
+  network:
+  - ["forwarded_port", {guest: 9090, host: 9090}]
 
 provisioner:
   name: chef_zero
 
 verifier:
   name: inspec
+  inspec_tests:
+    - test/smoke/default/
 
 platforms:
   - name: centos7.2
 
 suites:
-  - name: default
+  - name: rpm
     run_list:
       - recipe[openfire-chef::default]
-    verifier:
-      inspec_tests:
-        - test/smoke/default/
     attributes:
+
+  - name: tarball
+    run_list:
+      - recipe[openfire-chef::default]
+    attributes:
+      java:
+        jdk_version: 7
+      openfire:
+        install_type: nil
+        database:
+          type: 'postgresql'
+          password: 'foobar'
+      postgresql:
+        password:
+          postgres: 'bazfaz'
