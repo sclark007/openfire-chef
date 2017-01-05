@@ -4,7 +4,7 @@ local_rpm_path = "#{Chef::Config['file_cache_path']}/#{node['openfire']['source_
 
 remote_file local_rpm_path do
   checksum node['openfire']['rpm_source_checksum']
-  source "http://www.igniterealtime.org/downloadServlet?filename=openfire/#{node['openfire']['source_rpm']}"
+  source "#{node['openfire']['source_url']}/#{node['openfire']['source_rpm']}"
 end
 
 

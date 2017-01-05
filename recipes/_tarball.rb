@@ -19,7 +19,7 @@ local_tarball_path = "#{Chef::Config['file_cache_path']}/#{node['openfire']['sou
 
 remote_file local_tarball_path do
   checksum node['openfire']['source_checksum']
-  source "http://www.igniterealtime.org/downloadServlet?filename=openfire/#{node['openfire']['source_tarball']}"
+  source "#{node['openfire']['source_url']}/#{node['openfire']['source_tarball']}"
 end
 
 bash 'install_openfire' do

@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of openfire.
 
+## 0.2.1
+* update url path to a attribute
+* add rpm support as the default 
+
 ## 0.2.0:
 
 * Add PostGreSQL support via Opscode cookbook
