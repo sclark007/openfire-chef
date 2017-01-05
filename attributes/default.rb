@@ -1,6 +1,9 @@
 default['openfire']['source_tarball'] = 'openfire_4_0_4.tar.gz'
 default['openfire']['source_rpm'] = 'openfire-4.1.0-0.2.beta.x86_64.rpm'
 
+default['openfire']['source_url'] = 'http://www.igniterealtime.org/downloadServlet?filename=openfire'
+
+
 # default to install via rpm
 default['openfire']['install_type'] = 'rpm'
 
